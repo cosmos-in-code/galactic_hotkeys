@@ -5,10 +5,10 @@ import 'package:provider/provider.dart';
 
 /// A builder widget for handling Galactic Hotkeys and providing the list of pressed keys.
 class GalacticHotkeysBuilder extends StatelessWidget {
-
   /// A function that takes [BuildContext] and a list of [LogicalKeyboardKey]s as arguments
   /// and returns a widget to be built with the current pressed keys.
-  final Widget Function(BuildContext context, List<LogicalKeyboardKey> pressedKeys) builder;
+  final Widget Function(
+      BuildContext context, List<LogicalKeyboardKey> pressedKeys) builder;
 
   /// Creates a [GalacticHotkeysBuilder] with the specified builder function.
   ///

@@ -10,7 +10,8 @@ import 'galactic_hotkeys_controller.dart';
 typedef GroupsShortcuts<T> = Map<T, List<List<LogicalKeyboardKey>>>;
 
 /// Definition of the callback function for when a shortcut is pressed.
-typedef ShortcutPressed<T> = Function(T identifier, List<LogicalKeyboardKey> pressedKeys);
+typedef ShortcutPressed<T> = Function(
+    T identifier, List<LogicalKeyboardKey> pressedKeys);
 
 /// Widget that facilitates the implementation of keyboard shortcuts in Flutter.
 class GalacticHotkeys<T> extends StatefulWidget {
@@ -41,7 +42,6 @@ class GalacticHotkeys<T> extends StatefulWidget {
     this.onShortcutPressed,
     required Widget Function(BuildContext context, T? identifier) this.builder,
   }) : child = null;
-
 
   @override
   State<GalacticHotkeys<T>> createState() => _GalacticHotkeysState<T>();
@@ -76,7 +76,8 @@ class _GalacticHotkeysState<T> extends State<GalacticHotkeys<T>> {
           return KeyEventResult.handled;
         },
         autofocus: true,
-        child: widget.child ?? widget.builder!(context, _currentPressedShortcut),
+        child:
+            widget.child ?? widget.builder!(context, _currentPressedShortcut),
       ),
     );
   }

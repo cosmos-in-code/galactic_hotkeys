@@ -5,7 +5,8 @@ import 'package:flutter/widgets.dart';
 
 @protected
 class GalacticHotkeysController {
-  final _pressedKeysController = StreamController<List<LogicalKeyboardKey>>.broadcast();
+  final _pressedKeysController =
+      StreamController<List<LogicalKeyboardKey>>.broadcast();
 
   Stream<List<LogicalKeyboardKey>> get stream => _pressedKeysController.stream;
 
