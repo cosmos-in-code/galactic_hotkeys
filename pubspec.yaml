@@ -1,0 +1,19 @@
+name: galactic_hotkeys
+description: "Galactic Hotkeys is a robust Flutter package for streamlined keyboard shortcuts in your apps. Inspired by the cosmos."
+version: 1.0.0
+homepage: https://github.com/cosmos-in-code/galactic_hotkeys
+
+environment:
+  sdk: '>=3.2.2 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
