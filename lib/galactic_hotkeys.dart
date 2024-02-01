@@ -13,7 +13,6 @@ typedef ShortcutPressed<T> = Function(T identifier);
 
 /// Widget that facilitates the implementation of keyboard shortcuts in Flutter.
 class GalacticHotkeys<T> extends StatefulWidget {
-
   /// The main child widget that GalacticHotkeys wraps.
   final Widget child;
 
