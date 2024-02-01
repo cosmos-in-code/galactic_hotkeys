@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:galactic_hotkeys/galactic_hotkeys.dart';
+import 'package:galactic_hotkeys/galactic_hotkeys_widget.dart';
 
 void main() {
   runApp(const ExampleGalacticHotkeys());
