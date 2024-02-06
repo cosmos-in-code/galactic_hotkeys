@@ -9,9 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  galactic_hotkeys:
-    path: ../
-
+  galactic_hotkeys: ^1.1.0
   cupertino_icons: ^1.0.2
 
 dev_dependencies:

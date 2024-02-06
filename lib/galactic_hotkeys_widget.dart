@@ -27,11 +27,14 @@ class GalacticHotkeys<T> extends StatefulWidget {
   /// Callback function when a shortcut is pressed.
   final ShortcutPressed<T>? onShortcutPressed;
 
+  final FocusScopeNode? focusScopeNode;
+
   /// Creates a new instance of the widget using a child.
   const GalacticHotkeys({
     super.key,
     required Widget this.child,
     required this.shortcuts,
+    this.focusScopeNode,
     required ShortcutPressed<T> this.onShortcutPressed,
   }) : builder = null;
 
@@ -39,6 +42,7 @@ class GalacticHotkeys<T> extends StatefulWidget {
   const GalacticHotkeys.builder({
     super.key,
     required this.shortcuts,
+    this.focusScopeNode,
     this.onShortcutPressed,
     required Widget Function(BuildContext context, T? identifier) this.builder,
   }) : child = null;
@@ -51,6 +55,9 @@ class _GalacticHotkeysState<T> extends State<GalacticHotkeys<T>> {
   /// Focus node for handling keyboard events.
   final _focusNode = FocusNode();
 
+  /// Focus scope node for handling keyboard events.
+  late final FocusScopeNode _focusScopeNode;
+
   final _controller = GalacticHotkeysController();
 
   /// List of currently pressed keys.
@@ -60,9 +67,18 @@ class _GalacticHotkeysState<T> extends State<GalacticHotkeys<T>> {
   T? _currentPressedShortcut;
 
   @override
+  void initState() {
+    super.initState();
+    _focusScopeNode = widget.focusScopeNode ?? FocusScopeNode();
+  }
+
+  @override
   void dispose() {
     _controller.dispose();
     _focusNode.dispose();
+    if (widget.focusScopeNode == null) {
+      _focusScopeNode.dispose();
+    }
     super.dispose();
   }
 
@@ -70,14 +86,21 @@ class _GalacticHotkeysState<T> extends State<GalacticHotkeys<T>> {
   Widget build(BuildContext context) {
     return Provider(
       create: (_) => _controller,
-      child: FocusScope(
-        onKeyEvent: (focus, event) {
-          _handleKey(event);
-          return KeyEventResult.handled;
+      child: TapRegion(
+        onTapInside: (_) {
+          _focusScopeNode.requestFocus();
         },
-        autofocus: true,
-        child:
-            widget.child ?? widget.builder!(context, _currentPressedShortcut),
+        child: FocusScope(
+          node: _focusScopeNode,
+          onKeyEvent: (focus, event) {
+            _handleKey(event);
+            return KeyEventResult.handled;
+          },
+          autofocus: true,
+          canRequestFocus: true,
+          child:
+              widget.child ?? widget.builder!(context, _currentPressedShortcut),
+        ),
       ),
     );
   }

@@ -88,7 +88,7 @@ class _HomePageState extends State<_HomePage> {
             [LogicalKeyboardKey.metaLeft, LogicalKeyboardKey.keyV],
           ],
         },
-        onShortcutPressed: (Shortcut shortcut) {
+        onShortcutPressed: (Shortcut shortcut, pressedKeys) {
           setState(() => _latestPressedShortcut = shortcut);
 
           _delayToClearShortcutPressed?.cancel();

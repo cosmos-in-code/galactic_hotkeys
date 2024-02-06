@@ -78,10 +78,11 @@ packages:
   galactic_hotkeys:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
-    version: "1.0.0"
+      name: galactic_hotkeys
+      sha256: "4e1d83404000b018f25099859af4f505e88306f3d2be63fe72c8f00968399e98"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   lints:
     dependency: transitive
     description:
